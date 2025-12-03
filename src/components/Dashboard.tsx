@@ -36,12 +36,12 @@ export function Dashboard({ onReserveClick, reservations, userName, onLogout }: 
         {/* Header */}
         <div className="mb-8 flex justify-between items-start">
           <div>
-            <h1 className="text-slate-800 mb-2">Welcome Back, {userName}! 👋</h1>
-            <p className="text-slate-600">Your mental health and wellbeing matter</p>
+            <h1 className="text-slate-800 mb-2">Laipni lūdzam atpakaļ, {userName}! 👋</h1>
+            <p className="text-slate-600">Jūsu garīgā veselība un labklājība ir svarīga</p>
           </div>
           <Button variant="outline" onClick={onLogout} className="gap-2">
             <LogOut className="h-4 w-4" />
-            Logout
+            Izrakstīties
           </Button>
         </div>
 
@@ -52,9 +52,9 @@ export function Dashboard({ onReserveClick, reservations, userName, onLogout }: 
               <div>
                 <h3 className="mb-2 flex items-center gap-2">
                   <Heart className="h-6 w-6" />
-                  Need a Mental Health Day?
+                  Nepieciešama garīgās veselības diena?
                 </h3>
-                <p className="text-blue-50">Our school supports your wellbeing. Request a day off for self-care and recharge.</p>
+                <p className="text-blue-50">Mūsu skola atbalsta jūsu labklājību. Pieprasiet brīvdienu pašaprūpei un atjaunošanai.</p>
               </div>
               <Button
                 onClick={onReserveClick}
@@ -62,7 +62,7 @@ export function Dashboard({ onReserveClick, reservations, userName, onLogout }: 
                 className="bg-white text-blue-600 hover:bg-blue-50 whitespace-nowrap"
               >
                 <Plus className="mr-2 h-5 w-5" />
-                Reserve a Day Off
+                Rezervēt brīvdienu
               </Button>
             </div>
           </CardContent>
@@ -73,16 +73,16 @@ export function Dashboard({ onReserveClick, reservations, userName, onLogout }: 
           <CardHeader>
             <CardTitle className="flex items-center gap-2">
               <Clock className="h-5 w-5 text-blue-500" />
-              Your Wellbeing Day Requests
+              Jūsu labklājības dienu pieprasījumi
             </CardTitle>
-            <CardDescription>Track your mental health day requests and their status</CardDescription>
+            <CardDescription>Sekojiet saviem garīgās veselības dienu pieprasījumiem un to statusam</CardDescription>
           </CardHeader>
           <CardContent>
             {reservations.length === 0 ? (
               <div className="text-center py-8 text-slate-500">
                 <Calendar className="h-12 w-12 mx-auto mb-3 text-slate-300" />
-                <p>No requests yet</p>
-                <p className="text-sm">Click the button above to request a wellbeing day off</p>
+                <p>Vēl nav pieprasījumu</p>
+                <p className="text-sm">Noklikšķiniet uz pogas augšā, lai pieprasītu labklājības brīvdienu</p>
               </div>
             ) : (
               <div className="space-y-4">
@@ -96,7 +96,7 @@ export function Dashboard({ onReserveClick, reservations, userName, onLogout }: 
                         <p className="text-slate-800">{reservation.reason}</p>
                       </div>
                       <p className="text-sm text-slate-600">
-                        Date: {new Date(reservation.date).toLocaleDateString('en-US', {
+                        Datums: {new Date(reservation.date).toLocaleDateString('lv-LV', {
                           weekday: 'short',
                           year: 'numeric',
                           month: 'long',
@@ -104,7 +104,7 @@ export function Dashboard({ onReserveClick, reservations, userName, onLogout }: 
                         })}
                       </p>
                       <p className="text-xs text-slate-500 mt-1">
-                        Submitted: {new Date(reservation.submittedDate).toLocaleDateString()}
+                        Iesniegts: {new Date(reservation.submittedDate).toLocaleDateString('lv-LV')}
                       </p>
                     </div>
                     <Badge className={getStatusColor(reservation.status)}>

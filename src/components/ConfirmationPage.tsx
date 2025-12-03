@@ -17,17 +17,17 @@ export function ConfirmationPage({ reservation, onBackToDashboard }: Confirmatio
           <div className="inline-flex items-center justify-center w-20 h-20 rounded-full bg-green-100 mb-4">
             <CheckCircle className="h-10 w-10 text-green-600" />
           </div>
-          <h1 className="text-slate-800 mb-2">Request Submitted Successfully! 🎉</h1>
+          <h1 className="text-slate-800 mb-2">Pieprasījums veiksmīgi iesniegts! 🎉</h1>
           <p className="text-slate-600">
-            Your wellbeing day request has been received and is being reviewed
+            Jūsu labklājības dienas pieprasījums ir saņemts un tiek izskatīts
           </p>
         </div>
 
         {/* Confirmation Details */}
         <Card className="mb-6">
           <CardHeader>
-            <CardTitle>Request Details</CardTitle>
-            <CardDescription>Reference ID: #{reservation.id}</CardDescription>
+            <CardTitle>Pieprasījuma detaļas</CardTitle>
+            <CardDescription>Atsauces ID: #{reservation.id}</CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
@@ -37,7 +37,7 @@ export function ConfirmationPage({ reservation, onBackToDashboard }: Confirmatio
                   <User className="h-5 w-5 text-blue-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-slate-600">Student Name</p>
+                  <p className="text-sm text-slate-600">Skolēna vārds</p>
                   <p className="text-slate-800">{reservation.studentName}</p>
                 </div>
               </div>
@@ -48,7 +48,7 @@ export function ConfirmationPage({ reservation, onBackToDashboard }: Confirmatio
                   <BookOpen className="h-5 w-5 text-purple-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-slate-600">Class</p>
+                  <p className="text-sm text-slate-600">Klase</p>
                   <p className="text-slate-800">{reservation.className}</p>
                 </div>
               </div>
@@ -59,9 +59,9 @@ export function ConfirmationPage({ reservation, onBackToDashboard }: Confirmatio
                   <Calendar className="h-5 w-5 text-green-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-slate-600">Wellbeing Day Date</p>
+                  <p className="text-sm text-slate-600">Labklājības dienas datums</p>
                   <p className="text-slate-800">
-                    {new Date(reservation.date).toLocaleDateString('en-US', {
+                    {new Date(reservation.date).toLocaleDateString('lv-LV', {
                       weekday: 'short',
                       year: 'numeric',
                       month: 'long',
@@ -77,7 +77,7 @@ export function ConfirmationPage({ reservation, onBackToDashboard }: Confirmatio
                   <FileText className="h-5 w-5 text-orange-600" />
                 </div>
                 <div>
-                  <p className="text-sm text-slate-600">Reason</p>
+                  <p className="text-sm text-slate-600">Iemesls</p>
                   <p className="text-slate-800">{reservation.reason}</p>
                 </div>
               </div>
@@ -86,16 +86,16 @@ export function ConfirmationPage({ reservation, onBackToDashboard }: Confirmatio
             {/* Additional Notes */}
             {reservation.notes && (
               <div className="p-4 rounded-lg bg-slate-50">
-                <p className="text-sm text-slate-600 mb-2">Additional Notes</p>
+                <p className="text-sm text-slate-600 mb-2">Papildu piezīmes</p>
                 <p className="text-slate-800">{reservation.notes}</p>
               </div>
             )}
 
             {/* Submission Date */}
             <div className="p-4 rounded-lg bg-gradient-to-r from-blue-50 to-purple-50 border border-blue-200">
-              <p className="text-sm text-slate-600">Submitted on</p>
+              <p className="text-sm text-slate-600">Iesniegts</p>
               <p className="text-slate-800">
-                {new Date(reservation.submittedDate).toLocaleDateString('en-US', {
+                {new Date(reservation.submittedDate).toLocaleDateString('lv-LV', {
                   weekday: 'short',
                   year: 'numeric',
                   month: 'long',
@@ -111,23 +111,23 @@ export function ConfirmationPage({ reservation, onBackToDashboard }: Confirmatio
         {/* Next Steps */}
         <Card className="mb-6 bg-gradient-to-r from-blue-500 to-purple-500 border-0 text-white">
           <CardContent className="p-6">
-            <h3 className="mb-3">What Happens Next?</h3>
+            <h3 className="mb-3">Kas notiks tālāk?</h3>
             <ul className="space-y-2 text-blue-50">
               <li className="flex items-start gap-2">
                 <span>📧</span>
-                <span>You'll receive an email confirmation shortly</span>
+                <span>Drīzumā saņemsiet e-pasta apstiprinājumu</span>
               </li>
               <li className="flex items-start gap-2">
                 <span>⏱️</span>
-                <span>Your request will be reviewed within 24 hours</span>
+                <span>Jūsu pieprasījums tiks izskatīts 24 stundu laikā</span>
               </li>
               <li className="flex items-start gap-2">
                 <span>✅</span>
-                <span>You'll be notified via email once your request is approved or if more information is needed</span>
+                <span>Jūs saņemsiet paziņojumu e-pastā, kad jūsu pieprasījums būs apstiprināts vai ja būs nepieciešama papildu informācija</span>
               </li>
               <li className="flex items-start gap-2">
                 <span>📱</span>
-                <span>Check your dashboard anytime to view the status of your request</span>
+                <span>Jebkurā laikā pārbaudiet savu vadības paneli, lai skatītu pieprasījuma statusu</span>
               </li>
             </ul>
           </CardContent>
@@ -141,7 +141,7 @@ export function ConfirmationPage({ reservation, onBackToDashboard }: Confirmatio
             className="bg-white text-blue-600 hover:bg-blue-50"
           >
             <Home className="mr-2 h-5 w-5" />
-            Return to Dashboard
+            Atgriezties uz vadības paneli
           </Button>
         </div>
       </div>

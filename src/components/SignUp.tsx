@@ -39,27 +39,27 @@ export function SignUp({ onSignUp, onSwitchToLogin }: SignUpProps) {
     // Validate SSN (should be XXXXXX-XXXXX format)
     const ssnDigits = formData.ssn.replace(/\D/g, '');
     if (!formData.ssn) {
-      newErrors.ssn = 'Social Security Number is required';
+      newErrors.ssn = 'Personas kods ir obligāts';
     } else if (ssnDigits.length !== 11) {
-      newErrors.ssn = 'SSN must be 11 digits';
+      newErrors.ssn = 'Personas kodam jābūt 11 cipariem';
     }
 
     if (!formData.name.trim()) {
-      newErrors.name = 'Full name is required';
+      newErrors.name = 'Pilns vārds ir obligāts';
     } else if (formData.name.trim().split(' ').length < 2) {
-      newErrors.name = 'Please enter your full name (first and last)';
+      newErrors.name = 'Lūdzu, ievadiet savu pilnu vārdu (vārdu un uzvārdu)';
     }
 
     if (!formData.password) {
-      newErrors.password = 'Password is required';
+      newErrors.password = 'Parole ir obligāta';
     } else if (formData.password.length < 8) {
-      newErrors.password = 'Password must be at least 8 characters';
+      newErrors.password = 'Parolei jābūt vismaz 8 rakstzīmēm';
     }
 
     if (!formData.confirmPassword) {
-      newErrors.confirmPassword = 'Please confirm your password';
+      newErrors.confirmPassword = 'Lūdzu, apstipriniet savu paroli';
     } else if (formData.password !== formData.confirmPassword) {
-      newErrors.confirmPassword = 'Passwords do not match';
+      newErrors.confirmPassword = 'Paroles nesakrīt';
     }
 
     setErrors(newErrors);
@@ -80,15 +80,15 @@ export function SignUp({ onSignUp, onSwitchToLogin }: SignUpProps) {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full mb-4">
             <Heart className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-gray-900 mb-2">Student Wellbeing Portal</h1>
-          <p className="text-gray-600">Create your account to get started</p>
+          <h1 className="text-gray-900 mb-2">Skolēnu labklājības portāls</h1>
+          <p className="text-gray-600">Izveidojiet savu kontu, lai sāktu</p>
         </div>
 
         <Card>
           <CardHeader>
-            <CardTitle>Create Account</CardTitle>
+            <CardTitle>Izveidot kontu</CardTitle>
             <CardDescription>
-              All fields are required to create your account
+              Visi lauki ir obligāti, lai izveidotu kontu
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -96,7 +96,7 @@ export function SignUp({ onSignUp, onSwitchToLogin }: SignUpProps) {
               {/* SSN */}
               <div className="space-y-2">
                 <Label htmlFor="ssn">
-                  Social Security Number <span className="text-red-500">*</span>
+                  Personas kods <span className="text-red-500">*</span>
                 </Label>
                 <Input
                   id="ssn"
@@ -109,19 +109,19 @@ export function SignUp({ onSignUp, onSwitchToLogin }: SignUpProps) {
                 />
                 {errors.ssn && <p className="text-sm text-red-500">{errors.ssn}</p>}
                 <p className="text-xs text-gray-500">
-                  Your SSN is encrypted and securely stored for verification
+                  Jūsu personas kods ir šifrēts un droši uzglabāts verificēšanai
                 </p>
               </div>
 
               {/* Name */}
               <div className="space-y-2">
                 <Label htmlFor="name">
-                  Full Name <span className="text-red-500">*</span>
+                  Pilns vārds <span className="text-red-500">*</span>
                 </Label>
                 <Input
                   id="name"
                   type="text"
-                  placeholder="First and Last Name"
+                  placeholder="Vārds un uzvārds"
                   value={formData.name}
                   onChange={(e) => {
                     setFormData({ ...formData, name: e.target.value });
@@ -135,12 +135,12 @@ export function SignUp({ onSignUp, onSwitchToLogin }: SignUpProps) {
               {/* Password */}
               <div className="space-y-2">
                 <Label htmlFor="password">
-                  Password <span className="text-red-500">*</span>
+                  Parole <span className="text-red-500">*</span>
                 </Label>
                 <Input
                   id="password"
                   type="password"
-                  placeholder="Create a password (min. 8 characters)"
+                  placeholder="Izveidojiet paroli (min. 8 rakstzīmes)"
                   value={formData.password}
                   onChange={(e) => {
                     setFormData({ ...formData, password: e.target.value });
@@ -154,12 +154,12 @@ export function SignUp({ onSignUp, onSwitchToLogin }: SignUpProps) {
               {/* Confirm Password */}
               <div className="space-y-2">
                 <Label htmlFor="confirmPassword">
-                  Confirm Password <span className="text-red-500">*</span>
+                  Apstipriniet paroli <span className="text-red-500">*</span>
                 </Label>
                 <Input
                   id="confirmPassword"
                   type="password"
-                  placeholder="Re-enter your password"
+                  placeholder="Ievadiet paroli vēlreiz"
                   value={formData.confirmPassword}
                   onChange={(e) => {
                     setFormData({ ...formData, confirmPassword: e.target.value });
@@ -173,12 +173,12 @@ export function SignUp({ onSignUp, onSwitchToLogin }: SignUpProps) {
               </div>
 
               <Button type="submit" className="w-full">
-                Create Account
+                Izveidot kontu
               </Button>
 
               <div className="text-center pt-4 border-t">
                 <p className="text-sm text-gray-600 mb-3">
-                  Already have an account?
+                  Jau ir konts?
                 </p>
                 <Button
                   type="button"
@@ -187,7 +187,7 @@ export function SignUp({ onSignUp, onSwitchToLogin }: SignUpProps) {
                   onClick={onSwitchToLogin}
                 >
                   <ArrowLeft className="w-4 h-4 mr-2" />
-                  Back to Login
+                  Atpakaļ uz pieteikšanos
                 </Button>
               </div>
             </form>
@@ -196,9 +196,9 @@ export function SignUp({ onSignUp, onSwitchToLogin }: SignUpProps) {
 
         <div className="mt-6 text-center">
           <p className="text-xs text-gray-500">
-            By creating an account, you agree to use this portal responsibly
+            Izveidojot kontu, jūs piekrītat izmantot šo portālu atbildīgi
             <br />
-            for mental health and wellbeing day requests only.
+            tikai garīgās veselības un labklājības dienu pieprasījumiem.
           </p>
         </div>
       </div>

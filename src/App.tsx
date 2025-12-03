@@ -44,9 +44,9 @@ function App() {
       setCurrentUser(user);
       setIsAuthenticated(true);
       setCurrentView('dashboard');
-      toast.success(`Welcome back, ${name}!`);
+      toast.success(`Laipni lūdzam atpakaļ, ${name}!`);
     } else {
-      toast.error('Invalid credentials. Please check your information or create an account.');
+      toast.error('Nederīgi akreditācijas dati. Lūdzu, pārbaudiet informāciju vai izveidojiet kontu.');
     }
   };
 
@@ -54,7 +54,7 @@ function App() {
     // Check if user already exists
     const existingUser = users.find((u) => u.ssn === ssn);
     if (existingUser) {
-      toast.error('An account with this SSN already exists. Please login.');
+      toast.error('Konts ar šo personas kodu jau eksistē. Lūdzu, piesakieties.');
       setCurrentView('login');
       return;
     }
@@ -65,7 +65,7 @@ function App() {
     setCurrentUser(newUser);
     setIsAuthenticated(true);
     setCurrentView('dashboard');
-    toast.success(`Account created successfully! Welcome, ${name}!`);
+    toast.success(`Konts veiksmīgi izveidots! Laipni lūdzam, ${name}!`);
   };
 
   const handleSwitchToSignUp = () => {
@@ -81,7 +81,7 @@ function App() {
     setIsAuthenticated(false);
     setCurrentView('login');
     setReservations([]);
-    toast.info('You have been logged out');
+    toast.info('Jūs esat izrakstījies');
   };
 
   const handleReserveClick = () => {
@@ -99,7 +99,7 @@ function App() {
     setReservations([...reservations, newReservation]);
     setCurrentReservation(newReservation);
     setCurrentView('confirmation');
-    toast.success('Request submitted successfully!');
+    toast.success('Pieprasījums veiksmīgi iesniegts!');
   };
 
   const handleBackToDashboard = () => {

@@ -47,16 +47,16 @@ export function ReservationForm({ onSubmit, onBack }: ReservationFormProps) {
     const newErrors: Partial<Record<keyof ReservationData, string>> = {};
 
     if (!formData.studentName.trim()) {
-      newErrors.studentName = 'Student name is required';
+      newErrors.studentName = 'Skolēna vārds ir obligāts';
     }
     if (!formData.className) {
-      newErrors.className = 'Class is required';
+      newErrors.className = 'Klase ir obligāta';
     }
     if (!formData.date) {
-      newErrors.date = 'Date is required';
+      newErrors.date = 'Datums ir obligāts';
     }
     if (!formData.reason) {
-      newErrors.reason = 'Reason is required';
+      newErrors.reason = 'Iemesls ir obligāts';
     }
 
     setErrors(newErrors);
@@ -79,14 +79,14 @@ export function ReservationForm({ onSubmit, onBack }: ReservationFormProps) {
           className="mb-6 text-slate-600 hover:text-slate-800"
         >
           <ArrowLeft className="mr-2 h-4 w-4" />
-          Back to Dashboard
+          Atpakaļ uz vadības paneli
         </Button>
 
         <Card>
           <CardHeader>
-            <CardTitle>Request a Mental Health & Wellbeing Day</CardTitle>
+            <CardTitle>Pieprasīt garīgās veselības un labklājības dienu</CardTitle>
             <CardDescription>
-              Taking care of your mental health is important. Submit your request and you'll receive a response within 24 hours.
+              Rūpes par savu garīgo veselību ir svarīgas. Iesniedziet savu pieprasījumu un jūs saņemsiet atbildi 24 stundu laikā.
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -94,11 +94,11 @@ export function ReservationForm({ onSubmit, onBack }: ReservationFormProps) {
               {/* Student Name */}
               <div className="space-y-2">
                 <Label htmlFor="studentName">
-                  Student Name <span className="text-red-500">*</span>
+                  Skolēna vārds <span className="text-red-500">*</span>
                 </Label>
                 <Input
                   id="studentName"
-                  placeholder="Enter your full name"
+                  placeholder="Ievadiet savu pilnu vārdu"
                   value={formData.studentName}
                   onChange={(e) =>
                     setFormData({ ...formData, studentName: e.target.value })
@@ -113,7 +113,7 @@ export function ReservationForm({ onSubmit, onBack }: ReservationFormProps) {
               {/* Class */}
               <div className="space-y-2">
                 <Label htmlFor="class">
-                  Class <span className="text-red-500">*</span>
+                  Klase <span className="text-red-500">*</span>
                 </Label>
                 <Select
                   value={formData.className}
@@ -122,17 +122,17 @@ export function ReservationForm({ onSubmit, onBack }: ReservationFormProps) {
                   }
                 >
                   <SelectTrigger className={errors.className ? 'border-red-500' : ''}>
-                    <SelectValue placeholder="Select your class" />
+                    <SelectValue placeholder="Izvēlieties savu klasi" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="Grade 9A">Grade 9A</SelectItem>
-                    <SelectItem value="Grade 9B">Grade 9B</SelectItem>
-                    <SelectItem value="Grade 10A">Grade 10A</SelectItem>
-                    <SelectItem value="Grade 10B">Grade 10B</SelectItem>
-                    <SelectItem value="Grade 11A">Grade 11A</SelectItem>
-                    <SelectItem value="Grade 11B">Grade 11B</SelectItem>
-                    <SelectItem value="Grade 12A">Grade 12A</SelectItem>
-                    <SelectItem value="Grade 12B">Grade 12B</SelectItem>
+                    <SelectItem value="9.A klase">9.A klase</SelectItem>
+                    <SelectItem value="9.B klase">9.B klase</SelectItem>
+                    <SelectItem value="10.A klase">10.A klase</SelectItem>
+                    <SelectItem value="10.B klase">10.B klase</SelectItem>
+                    <SelectItem value="11.A klase">11.A klase</SelectItem>
+                    <SelectItem value="11.B klase">11.B klase</SelectItem>
+                    <SelectItem value="12.A klase">12.A klase</SelectItem>
+                    <SelectItem value="12.B klase">12.B klase</SelectItem>
                   </SelectContent>
                 </Select>
                 {errors.className && (
@@ -143,7 +143,7 @@ export function ReservationForm({ onSubmit, onBack }: ReservationFormProps) {
               {/* Date */}
               <div className="space-y-2">
                 <Label>
-                  Date Requested <span className="text-red-500">*</span>
+                  Pieprasītais datums <span className="text-red-500">*</span>
                 </Label>
                 <Popover open={isCalendarOpen} onOpenChange={setIsCalendarOpen}>
                   <PopoverTrigger asChild>
@@ -156,13 +156,13 @@ export function ReservationForm({ onSubmit, onBack }: ReservationFormProps) {
                     >
                       <CalendarIcon className="mr-2 h-4 w-4" />
                       {selectedDate
-                        ? selectedDate.toLocaleDateString('en-US', {
+                        ? selectedDate.toLocaleDateString('lv-LV', {
                             weekday: 'short',
                             year: 'numeric',
                             month: 'long',
                             day: 'numeric',
                           })
-                        : 'Pick a date'}
+                        : 'Izvēlieties datumu'}
                     </Button>
                   </PopoverTrigger>
                   <PopoverContent className="w-auto p-0" align="start">
@@ -185,21 +185,21 @@ export function ReservationForm({ onSubmit, onBack }: ReservationFormProps) {
               {/* Reason */}
               <div className="space-y-2">
                 <Label htmlFor="reason">
-                  Primary Reason <span className="text-red-500">*</span>
+                  Galvenais iemesls <span className="text-red-500">*</span>
                 </Label>
                 <Select
                   value={formData.reason}
                   onValueChange={(value) => setFormData({ ...formData, reason: value })}
                 >
                   <SelectTrigger className={errors.reason ? 'border-red-500' : ''}>
-                    <SelectValue placeholder="Select a reason" />
+                    <SelectValue placeholder="Izvēlieties iemeslu" />
                   </SelectTrigger>
                   <SelectContent>
-                    <SelectItem value="Mental Health & Wellbeing">Mental Health & Wellbeing</SelectItem>
-                    <SelectItem value="Stress Management">Stress Management</SelectItem>
-                    <SelectItem value="Personal Wellness">Personal Wellness</SelectItem>
-                    <SelectItem value="Self-Care Day">Self-Care Day</SelectItem>
-                    <SelectItem value="Other">Other</SelectItem>
+                    <SelectItem value="Garīgā veselība un labklājība">Garīgā veselība un labklājība</SelectItem>
+                    <SelectItem value="Stresa pārvaldība">Stresa pārvaldība</SelectItem>
+                    <SelectItem value="Personīgā labklājība">Personīgā labklājība</SelectItem>
+                    <SelectItem value="Pašaprūpes diena">Pašaprūpes diena</SelectItem>
+                    <SelectItem value="Cits">Cits</SelectItem>
                   </SelectContent>
                 </Select>
                 {errors.reason && <p className="text-sm text-red-500">{errors.reason}</p>}
@@ -207,10 +207,10 @@ export function ReservationForm({ onSubmit, onBack }: ReservationFormProps) {
 
               {/* Optional Notes */}
               <div className="space-y-2">
-                <Label htmlFor="notes">Additional Notes (Optional)</Label>
+                <Label htmlFor="notes">Papildu piezīmes (pēc izvēles)</Label>
                 <Textarea
                   id="notes"
-                  placeholder="Share any additional context if you'd like (completely optional)..."
+                  placeholder="Dalieties ar jebkādu papildu kontekstu, ja vēlaties (pilnībā pēc izvēles)..."
                   value={formData.notes}
                   onChange={(e) => setFormData({ ...formData, notes: e.target.value })}
                   className="min-h-[100px]"
@@ -220,10 +220,10 @@ export function ReservationForm({ onSubmit, onBack }: ReservationFormProps) {
               {/* Submit Button */}
               <div className="flex flex-col sm:flex-row gap-3 pt-4">
                 <Button type="submit" className="flex-1 bg-gradient-to-r from-blue-500 to-purple-500 hover:from-blue-600 hover:to-purple-600">
-                  Submit Request
+                  Iesniegt pieprasījumu
                 </Button>
                 <Button type="button" variant="outline" onClick={onBack} className="flex-1">
-                  Cancel
+                  Atcelt
                 </Button>
               </div>
             </form>
@@ -234,7 +234,7 @@ export function ReservationForm({ onSubmit, onBack }: ReservationFormProps) {
         <Card className="mt-6 bg-purple-50 border-purple-200">
           <CardContent className="p-4">
             <p className="text-sm text-purple-800">
-              <strong>💙 Remember:</strong> Your mental health matters. Our school supports taking time for self-care and wellbeing. You don't need to provide detailed explanations - your wellbeing is reason enough.
+              <strong>💙 Atcerieties:</strong> Jūsu garīgā veselība ir svarīga. Mūsu skola atbalsta laika atvēlēšanu pašaprūpei un labklājībai. Jums nav jāsniedz detalizēti paskaidrojumi - jūsu labklājība ir pietiekams iemesls.
             </p>
           </CardContent>
         </Card>

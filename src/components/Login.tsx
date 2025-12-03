@@ -38,17 +38,17 @@ export function Login({ onLogin, onSwitchToSignUp }: LoginProps) {
     // Validate SSN (should be XXXXXX-XXXXX format)
     const ssnDigits = formData.ssn.replace(/\D/g, '');
     if (!formData.ssn) {
-      newErrors.ssn = 'Social Security Number is required';
+      newErrors.ssn = 'Personas kods ir obligāts';
     } else if (ssnDigits.length !== 11) {
-      newErrors.ssn = 'SSN must be 11 digits';
+      newErrors.ssn = 'Personas kodam jābūt 11 cipariem';
     }
 
     if (!formData.name.trim()) {
-      newErrors.name = 'Name is required';
+      newErrors.name = 'Vārds ir obligāts';
     }
 
     if (!formData.password) {
-      newErrors.password = 'Password is required';
+      newErrors.password = 'Parole ir obligāta';
     }
 
     setErrors(newErrors);
@@ -69,15 +69,15 @@ export function Login({ onLogin, onSwitchToSignUp }: LoginProps) {
           <div className="inline-flex items-center justify-center w-16 h-16 bg-gradient-to-br from-blue-500 to-purple-500 rounded-full mb-4">
             <Heart className="w-8 h-8 text-white" />
           </div>
-          <h1 className="text-gray-900 mb-2">Student Wellbeing Portal</h1>
-          <p className="text-gray-600">Sign in to request your wellness day</p>
+          <h1 className="text-gray-900 mb-2">Skolēnu labklājības portāls</h1>
+          <p className="text-gray-600">Piesakieties, lai pieprasītu savu labklājības dienu</p>
         </div>
 
         <Card>
           <CardHeader>
-            <CardTitle>Login</CardTitle>
+            <CardTitle>Pieteikšanās</CardTitle>
             <CardDescription>
-              Enter your credentials to access your account
+              Ievadiet savus akreditācijas datus, lai piekļūtu kontam
             </CardDescription>
           </CardHeader>
           <CardContent>
@@ -85,7 +85,7 @@ export function Login({ onLogin, onSwitchToSignUp }: LoginProps) {
               {/* SSN */}
               <div className="space-y-2">
                 <Label htmlFor="ssn">
-                  Social Security Number <span className="text-red-500">*</span>
+                  Personas kods <span className="text-red-500">*</span>
                 </Label>
                 <Input
                   id="ssn"
@@ -98,19 +98,19 @@ export function Login({ onLogin, onSwitchToSignUp }: LoginProps) {
                 />
                 {errors.ssn && <p className="text-sm text-red-500">{errors.ssn}</p>}
                 <p className="text-xs text-gray-500">
-                  Your SSN is encrypted and securely stored
+                  Jūsu personas kods ir šifrēts un droši uzglabāts
                 </p>
               </div>
 
               {/* Name */}
               <div className="space-y-2">
                 <Label htmlFor="name">
-                  Full Name <span className="text-red-500">*</span>
+                  Pilns vārds <span className="text-red-500">*</span>
                 </Label>
                 <Input
                   id="name"
                   type="text"
-                  placeholder="Enter your full name"
+                  placeholder="Ievadiet savu pilnu vārdu"
                   value={formData.name}
                   onChange={(e) => {
                     setFormData({ ...formData, name: e.target.value });
@@ -124,12 +124,12 @@ export function Login({ onLogin, onSwitchToSignUp }: LoginProps) {
               {/* Password */}
               <div className="space-y-2">
                 <Label htmlFor="password">
-                  Password <span className="text-red-500">*</span>
+                  Parole <span className="text-red-500">*</span>
                 </Label>
                 <Input
                   id="password"
                   type="password"
-                  placeholder="Enter your password"
+                  placeholder="Ievadiet savu paroli"
                   value={formData.password}
                   onChange={(e) => {
                     setFormData({ ...formData, password: e.target.value });
@@ -141,12 +141,12 @@ export function Login({ onLogin, onSwitchToSignUp }: LoginProps) {
               </div>
 
               <Button type="submit" className="w-full">
-                Login
+                Pieteikties
               </Button>
 
               <div className="text-center pt-4 border-t">
                 <p className="text-sm text-gray-600 mb-3">
-                  Don't have an account?
+                  Nav konta?
                 </p>
                 <Button
                   type="button"
@@ -154,7 +154,7 @@ export function Login({ onLogin, onSwitchToSignUp }: LoginProps) {
                   className="w-full"
                   onClick={onSwitchToSignUp}
                 >
-                  Create an Account
+                  Izveidot kontu
                 </Button>
               </div>
             </form>
@@ -163,9 +163,9 @@ export function Login({ onLogin, onSwitchToSignUp }: LoginProps) {
 
         <div className="mt-6 text-center">
           <p className="text-xs text-gray-500">
-            This portal is for mental health and wellbeing day requests only.
+            Šis portāls ir tikai garīgās veselības un labklājības dienu pieprasījumiem.
             <br />
-            All information is kept confidential and secure.
+            Visa informācija tiek glabāta konfidenciāli un droši.
           </p>
         </div>
       </div>
